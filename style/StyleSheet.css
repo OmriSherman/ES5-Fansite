@@ -1,0 +1,69 @@
+﻿body
+{
+    background-image:url('../pics/BG.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.style60
+{
+    color: #FFFFFF;
+}
+
+        .style51
+        {
+            text-decoration: underline;
+            color: #FFFFFF;
+            font-size: xx-large;
+        }
+               .style50
+        {
+             position: absolute;
+            left: 860px;
+            top: 250px;
+         height: 213px;
+        width: 213px;
+        }
+        .table1 {
+background: rgba(255,255,255,0.4);
+}
+a:hover {
+	color: #FFFFFF; 
+}
+a:link
+{
+   color: #FFFFFF; 
+}
+a:visited
+{
+    color: #FFFFFF;
+}
+.style52
+{
+    height: 45px; width: 59px
+}
+ .style53
+        {
+            width: 365px;
+    height: 315px;
+}
+.style54
+{
+    height: 160px; 
+    width: 168px;
+}
+.style61
+        {
+            color: #FF0000;
+            text-decoration: underline;
+            font-size: xx-large;
+        }
+        .style62
+        {
+            color: #FF0000;
+            font-size: x-large;
+        }
+        .style63
+        {
+            color: #00FF00;
+            font-size: x-large;
+        }

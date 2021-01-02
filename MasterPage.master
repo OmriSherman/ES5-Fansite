@@ -1,0 +1,127 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
+<head runat="server">
+<script type="text/javascript">
+   
+    function checkform(that) {
+        if (
+                 checkusername(that.username, "user name")
+                 && checkusername(that.pass, "password")
+                 )
+            return true;
+
+        return false;
+    }
+     
+     function checkusername(that, s) {
+         var str = that.value;
+         if (str.length == 0) {
+             alert("Must pick a " + s);
+             that.select();
+             return false;
+         }
+         if (!(str.length >= 4 && str.length <= 12)) {
+             alert(s + " must be between 4-12");
+             that.select();
+             return false;
+         }
+         return true;
+     }
+
+    
+    </script>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="style/StyleSheet.css" />
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .style1
+        {
+            color: #FFFFFF;
+        }
+    </style>
+</head>
+<body>
+   <center>
+   <a name="GoUp"></a>
+   <table>
+   <tr><td>
+       <img src="pics/Skyrim.jpg" alt="Skyrim" 
+           style="height: 165px; width: 331px; margin-bottom: 0px;" /></td>
+             <%
+                 if ((string)Session["User"] == "Guest")
+                    {%>
+   <td>
+   <form name="registerform" method="post" action="Signin.aspx" onsubmit="return checkform(this)">
+   <table>
+   
+   <tr><td class="style1">Hello,<%Response.Write((string)Session["User"]);%> </td></tr>
+   <tr><td class="style1"><span class="style1">username:</span>
+    <input type="text" name="username" /> </td></tr>
+    <tr><td class="style1">password:
+   <input type="password" name="pass" /></td></tr>
+   <tr><td class="style1"><input type="submit" value="sign in" /></td></tr>
+   </table>
+   </form>
+     <%} %>   
+
+   </td></tr>
+   </table>
+   <%if ((string)Session["User"] == "Admin") 
+  {%>
+ <span class="style63">Welcome back,<%Response.Write(Session["User"]);%> </span><br />
+         <a href="Adminmenu.aspx"><input type="button" value="Admin menu" /></a>
+          <br />
+          <a href="Logout.aspx"><input type="button" value="Logout" /></a>
+          <%} %>
+                  <%else if ((string)Session["User"] != "Guest")
+            {%>
+            <span class="style62">Welcome back,<%Response.Write(Session["User"]);%> </span><br />
+          <a href="Usermenu.aspx">
+          <input type="button" value="User menu" /></a>
+          <br />
+          <a href="Logout.aspx"><input type="button" value="Logout" /></a>
+            <%} %>
+   </center>
+   <table align="center" frame="box" cellpadding="10" bgcolor="black">
+   <tr>
+   <td><a href="Default.aspx">
+       <img src="pics/home.png" class="style52" alt="Homepage" onmouseover="this.src='pics/home_white.png'" onmouseout="this.src='pics/home.png'" /><br />Homepage</a></td>
+   
+   <td><a href="Register.aspx">
+       <img src="pics/register.png" class="style52" alt="Register" onmouseover="this.src='pics/register_white.png'" onmouseout="this.src='pics/register.png'" /><br />Register</a></td>
+   
+  <td><a href="Contact.aspx">
+  <img src="pics/contact.png" class="style52" alt="Contact" onmouseover="this.src='pics/contact_white.png'" onmouseout="this.src='pics/contact.png'" /><br />Contact<br />us</a></td>
+  
+   <td><a href="Characters.aspx">
+       <img src="pics/characters.png"  class="style52" alt="Characters" onmouseout="this.src='pics/characters.png'" onmouseover="this.src='pics/characters_white.png'" /><br />Characters</a></td>
+  
+   <td ><a href="Cities.aspx">
+       <img src="pics/cities.png" class="style52" alt="Cities"  onmouseout="this.src='pics/cities.png'" onmouseover="this.src='pics/cities_white.png'" /><br />Cities</a></td>
+   
+   <td><a href="Skills.aspx">
+       <img src="pics/skill.png" class="style52" alt="Skills"  onmouseover="this.src='pics/skill_white.png'" onmouseout="this.src='pics/skill.png'" /><br />Skills</a></td>
+   
+   <td><a href="Dragonborn.aspx">
+       <img src="pics/dragonborn.png" class="style52" alt="Dragonborn" onmouseover="this.src='pics/dragonborn_white.png'" onmouseout="this.src='pics/dragonborn.png'"  /><br />The<br />Dragonborn</a></td>
+   
+   <td><a href="Sidestories.aspx">
+   <img src="pics/Book.png" class="style52" alt="Side Stories" onmouseover="this.src='pics/Book_white.png'" onmouseout="this.src='pics/Book.png'" /><br />Side<br />Stories</a></td>
+
+   
+   </tr>
+   </table>
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+        <center><br /><br /><br /><br /><br /><br /><br />
+        <span class="style1">Visitors:<%Response.Write(Application["Visitors"]);%></span><br />
+        <a href="#GoUp">
+       <img src="pics/ArrowUp.jpg" 
+               style="height: 82px; width: 110px; margin-left: 0px; margin-right: 0px;" 
+               alt="Back to the top of the page"/></a>
+        </center>
+</body>
+</html>
